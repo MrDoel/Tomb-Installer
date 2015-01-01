@@ -79,6 +79,12 @@ function head {
                --------------------------------${fin}"
 }
 
+function already {
+	if [ -x "/usr/local/bin/tomb" ]; then
+		echo -e "${grn}Tomb already installed${fin}";exit
+	fi	
+}
+
 function install {
   head
   echo && echo -e "${grn}Installing . .${fin}"
@@ -104,6 +110,7 @@ else
 echo -e ${rd}"Installation failed!\n\nPlease check your internet connection"${fin};sleep 1
 fi
 }
+already
 chkroot
 chkinetn
 chkwget
